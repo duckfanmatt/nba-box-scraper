@@ -3,32 +3,34 @@ nba-box-scraper
 Scrapes NBA game box scores and outputs individual player stats
 
 Usage:
-<python> scraper.py -f <player file> -d <date>
-	-d date in format yyyymmdd"					
+------
+python scraper.py -f {filename} -d {date}  
+	-d date in format yyyymmdd					
 	-f file with list of player names
 
-example:
+###example:
 python scraper.py -f ./data/testplayers.txt -d 20141028
 
 Test cases
 ----------
 Simple test cases are included:
-testboxscore.py
-testplayer.py
-testscraper.py
+* testboxscore.py
+* testplayer.py
+* testscraper.py
 
-example:
-python testscraper.py
---> this should spit out "Test PASSED!" with a list of players found
+###example:
+python testscraper.py  
+--> this should spit out "Test PASSED!" with a list of players found  
 
-Player file is of format: (see example as data/testplayers.txt)
---------------------------
-L. James
-D. Wade
-...
-D. Lillard
+Player file format: 
+-------------------
+L. James  
+D. Wade  
+...  
+D. Lillard  
 
-This currently expects first initial then last name in this format: L. James
+###example:
+data/testplayers.txt
 
 Known issues
 ------------
