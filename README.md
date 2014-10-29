@@ -29,8 +29,8 @@ D. Wade
 ...  
 D. Lillard  
 
-###example:
-data/testplayers.txt
+###example file:
+[data/testplayers.txt](data/testplayers.txt)
 
 Known issues
 ------------
