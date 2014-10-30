@@ -10,7 +10,7 @@ class Scraper(object):
 		return
 
 	def ScrapeLines(self,date, playerfile):
-		player_lines = []
+		playerlines = []
 		player = Player()
 		players = player.GetPlayers(playerfile)
 		
@@ -29,11 +29,11 @@ class Scraper(object):
 			print "ERROR - No links found on scoreboard"
 			return ""
 		
-		player_lines = self.GetPlayerLines(bs, links,players)
-		return player_lines
+		playerlines = self.GetPlayerLines(bs, links,players)
+		return playerlines
 
 	def GetPlayerLines(self, bs, links, players):
-		player_lines = []		
+		playerlines = []		
 		# Open each links URL and search for player
 		for link in links:
 			URL = bs.GetLinkURL(link)
@@ -50,12 +50,12 @@ class Scraper(object):
 				if len(line) > 0:
 					print "Saving", p," stat line"
 					# add the player line
-					player_lines.append(line)
+					playerlines.append(line)
 					# don't search for the player again
 					print "Removing", p," from search"
 					players.remove(p) # remove from players list
 					print "remaining players: ",players
-		return player_lines
+		return playerlines
 
 	
 def usage():
@@ -82,9 +82,9 @@ def main(argv):
          		date = arg
    	# do scraping
 	scraper = Scraper()
-	player_lines = scraper.ScrapeLines(date, infile)
+	playerlines = scraper.ScrapeLines(date, infile)
 	print "Players Lines Found:"
-	for line in player_lines:
+	for line in playerlines:
 		print line
 
 if __name__ == "__main__":

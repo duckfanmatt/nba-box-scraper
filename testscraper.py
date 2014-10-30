@@ -5,17 +5,17 @@ from scraper import Scraper
 
 scraper = Scraper()
 date = "20140301"
-playerfile = "./data/TestPlayers.csv"
-player_lines = scraper.ScrapeLines(date, playerfile)
+playerfile = "./data/testplayers.txt"
+playerlines = scraper.ScrapeLines(date, playerfile)
 
 # use simple count to verify test passed
-playercount = len(player_lines)
-if playercount == 6:
-	print "Test PASSED!"
-else:
-	print "Test FAILED!"
+playercount = len(playerlines)
 
 print "Number of Players Lines Found:", playercount
-print player_lines
+print playerlines
 
+if playercount == 6:
+	print "Test PASSED"
+else:
+	print "Test FAILED"
 

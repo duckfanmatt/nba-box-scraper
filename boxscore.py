@@ -66,7 +66,7 @@ class BoxScore(object):
 			result = re.search(playersearch, str(statline), re.DOTALL)
 	
 			if result:
-				playerline = CleanLine(result.group())
+				playerline = self.CleanLine(result.group())
 				print "Player ",player, "FOUND!"
 				break # player found, don't need to keep looking
 				
@@ -76,40 +76,40 @@ class BoxScore(object):
 		return playerline
 
 
-def CleanLine(playerline):
-	# clean up HTML line and return only data
-	# input looks like this:
-	'''
-	T. Chandler</a></td>
-	<td class="shsTotD">C</td>
-	<td class="shsTotD">27:45</td>
-	<td class="shsTotD">4-8</td>
-	<td class="shsTotD">0-0</td>
-	<td class="shsTotD">0-0</td>
-	<td class="shsTotD">-8</td>
-	<td class="shsTotD">3</td>
-	<td class="shsTotD">10</td>
-	<td class="shsTotD">0</td>
-	<td class="shsTotD">0</td>
-	<td class="shsTotD">2</td>
-	<td class="shsTotD">1</td>
-	<td class="shsTotD">5</td>
-	<td class="shsTotD">8</td>
-	</tr>
-	'''
-	cleanline = []	
-	result = re.search(r'(.*)</a></td>', playerline) # player name
-	if result:
-		print "Player name:", result.group(1)
-		cleanline.append(result.group(1))
+	def CleanLine(self, playerline):
+		# clean up HTML line and return only data
+		# input looks like this:
+		'''
+		T. Chandler</a></td>
+		<td class="shsTotD">C</td>
+		<td class="shsTotD">27:45</td>
+		<td class="shsTotD">4-8</td>
+		<td class="shsTotD">0-0</td>
+		<td class="shsTotD">0-0</td>
+		<td class="shsTotD">-8</td>
+		<td class="shsTotD">3</td>
+		<td class="shsTotD">10</td>
+		<td class="shsTotD">0</td>
+		<td class="shsTotD">0</td>
+		<td class="shsTotD">2</td>
+		<td class="shsTotD">1</td>
+		<td class="shsTotD">5</td>
+		<td class="shsTotD">8</td>
+		</tr>
+		'''
+		cleanline = []	
+		result = re.search(r'(.*)</a></td>', playerline) # player name
+		if result:
+			print "Player name:", result.group(1)
+			cleanline.append(result.group(1))
 	
-	print "Line = ", playerline
-	result = re.findall(r'<td class="shsTotD">(.*)</td>', playerline) # player stats
-	for stat in result:
-		cleanline.append(stat)
+		print "Line = ", playerline
+		result = re.findall(r'<td class="shsTotD">(.*)</td>', playerline) # player stats
+		for stat in result:
+			cleanline.append(stat)
 	
-	print "Player stats:", cleanline
+		print "Player stats:", cleanline
 
-	return cleanline
+		return cleanline
 
 
