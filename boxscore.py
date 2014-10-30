@@ -98,13 +98,15 @@ class BoxScore(object):
 		</tr>
 		'''
 		cleanline = []	
+		playerline = playerline.replace('\xc2\xa0', ' ') # get rid of NBSPs
 		result = re.search(r'(.*)</a></td>', playerline) # player name
 		if result:
 			print "Player name:", result.group(1)
 			cleanline.append(result.group(1))
 	
 		print "Line = ", playerline
-		result = re.findall(r'<td class="shsTotD">(.*)</td>', playerline) # player stats
+		result = re.findall(r'<td class=.*>(.*)</td>', playerline) # player stats
+		
 		for stat in result:
 			cleanline.append(stat)
 	
