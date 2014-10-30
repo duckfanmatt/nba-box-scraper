@@ -2,8 +2,14 @@ nba-box-scraper
 ===============
 Scrapes NBA game box scores and outputs individual player stats
 
-Usage:
-------
+Requirements
+------------
+Requires Python  
+Requires [Beautiful Soup](http://www.crummy.com/software/BeautifulSoup/)  
+Requires [Requests](http://docs.python-requests.org/en/latest/)  
+
+Usage
+-----
 python scraper.py -f {filename} -d {date}  
 	-d date in format yyyymmdd					
 	-f file with list of player names
@@ -22,8 +28,8 @@ Simple test cases are included:
 python testscraper.py  
 --> this should spit out "Test PASSED!" with a list of players found  
 
-Player file format: 
--------------------
+Player file format
+------------------
 L. James  
 D. Wade  
 ...  
